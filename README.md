@@ -1,6 +1,11 @@
 # ITransition Study Guide
----
+
+## Company Overview
+
+iTransition is a software development company specializing in various IT services, including web development, custom software solutions, and IT consulting. As an Intern Front-End Developer, understanding the company's tech stack, working culture, and the typical expectations for software development roles is crucial.
+
 ### Differences between Var, Let and Const
+---
 Var: Function-scoped or global if declared outside function. Are reassignable and will initialize as undefined. If you reference them before initialization it will not return an error but undefined.
 
 Let: Block-scoped (limited to the block is declared). Can be reassignable and this type of variable is not initialized until the declaration is encountered. Accessing it before declaration results in ReferenceError.
@@ -8,6 +13,7 @@ Let: Block-scoped (limited to the block is declared). Can be reassignable and th
 Const: Block-scoped and cannot be reassigned after its initial assignment. If the variable holds an object or an array it can be modified, also needs to be initialuzed until declaration.
 
 ### Difference between HTML, CSS and JavaScript
+----
 HTML (Hypertext Markup Language): It's the structure of a webpage. Think of it as the skeleton of a house. HTML defines the different parts of a webpage (like headings, paragraphs, images, etc.). It gives meaning to the content, but by itself, it's pretty plain and unstyled.
 
 CSS (Cascading Style Sheets): It’s the design or style of a webpage. If HTML is the skeleton of a house, CSS is the paint, furniture, and decorations that make it look good. CSS controls things like colors, fonts, spacing, and layout, making the webpage visually appealing.
@@ -18,6 +24,7 @@ In summary, HTML builds the structure, CSS makes it look good, and JavaScript ma
 
 
 ### HTML Basic Boilerplate
+---
 
     <html lang="en"> 
         <head>
@@ -27,8 +34,10 @@ In summary, HTML builds the structure, CSS makes it look good, and JavaScript ma
         </head>
         <body></body>
     </html>
+---
 
 ### What is SOLID?
+---
 SOLID is a set of five design principles in object-oriented programming that help developers create more understandable, flexible, and maintainable software. These principles promote clean, modular, and scalable code that is easier to test and extend.
 
 Here's a breakdown of the SOLID principles:
@@ -60,4 +69,63 @@ Here's a breakdown of the SOLID principles:
 - Example: If a class OrderProcessor directly depends on PayPalPaymentService, it would be tightly coupled to that payment service. By introducing an abstraction (like a PaymentService interface), OrderProcessor can work with any payment service (PayPal, Stripe, etc.) that implements the PaymentService interface.
 
 ### ISP in SOLID Principles
+---
 he ISP in SOLID stands for the Interface Segregation Principle. It means that a class should not be forced to implement interfaces it does not use. Instead of having one large interface, it is better to split it into smaller, more specific ones. This way, classes only need to implement the methods that are relevant to them.
+
+---
+
+### What is ReactJS?
+ReactJS is a JavaScript library developed by Facebook for building user interfaces for singlepage applications. Is component-based which allows developers to build encapsulated components that manage their own state and can be used to create complex interfaces.
+
+- Virtual DOM: React uses a virtual DOM to improve performance. When the state of an object changes, React updates the virtual DOM first, then it compares the virtual DOM with a snapshot of the previous DOM state, and finally, it updates the real DOM with only the changes.
+- JSX: React uses JSX, a syntax extension that allows HTML to be written within JavaScript code. This makes the code easier to understand and debug.
+- Ecosystem: React has a rich ecosystem with many libraries and tools that complement it, such as Redux for state management and React Router for routing.
+
+#### useState, useEffect and useContext
+- useState: Manages state in functional components to keep track of a value.
+- useEffect: Performs an action when the component mounts.
+- useContext: Shares data across components without passing props manually.
+
+#### How do you know when a component is mounted and unmounted?
+
+A component is mounted when it is first rendered and added to the DOM.
+
+---
+    import React, { useEffect } from 'react';
+
+    const MyComponent = () => {
+    useEffect(() => {
+        console.log('Component mounted');
+    }, []); // Empty array ensures this runs only once after the initial render
+
+    return <div>My Component</div>;
+    };
+
+    export default MyComponent;
+---
+
+A component is unmounted when it is removed from the DOM.
+
+How: Return a cleanup function from the useEffect hook.
+
+---
+    import React, { useEffect } from 'react';
+
+    const MyComponent = () => {
+    useEffect(() => {
+        console.log('Component mounted');
+
+        return () => {
+        console.log('Component unmounted');
+        };
+    }, []); // Empty array ensures this runs only once after the initial render
+
+    return <div>My Component</div>;
+    };
+
+    export default MyComponent;
+---
+
+### What is NextJS?
+
+
