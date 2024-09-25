@@ -17,3 +17,14 @@ JavaScript: It’s the behavior or functionality of a webpage. If HTML is the sk
 In summary, HTML builds the structure, CSS makes it look good, and JavaScript makes it interactive.
 
 
+### HTML Basic Boilerplate
+
+    <html lang="en"> 
+        <head>
+        <meta charset="UTF-8">
+        <meta name="viewport">
+        <title>Document</title>
+        </head>
+        <body></body>
+    </html>
+
