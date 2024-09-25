@@ -36,6 +36,75 @@ In summary, HTML builds the structure, CSS makes it look good, and JavaScript ma
     </html>
 ---
 
+### What is the DOM?
+The Document Object Model (DOM) is a programming interface for web documents. It represents the structure of a document as a tree of objects, allowing programs to manipulate the document’s structure, style, and content.
+
+#### Key Points
+- Tree Structure: The DOM represents the document as a tree of nodes, where each node corresponds to a part of the document (e.g., elements, attributes, text).
+- Manipulation: You can use the DOM to create, delete, and modify elements and content in a web document.
+- Language-Independent: The DOM can be used with any programming language, though it’s most commonly used with JavaScript in web development.
+- Dynamic Interaction: It allows for dynamic changes to the document, enabling interactive web pages.
+
+### How do you make an API call?
+##### API GET EXAMPLE CALL
+    const apiUrl = 'https://api.example.com/data';
+    // Make a GET request
+    fetch(apiUrl)
+    .then(response => {
+        if (!response.ok) {
+        throw new Error('Network response was not ok');
+        }
+        return response.json(); // Convert response to JSON
+    })
+    .then(data => {
+        console.log(data); // Handle the data from the API
+    })
+    .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+    });
+#### API POST EXAMPLE CALL
+    const apiUrl = 'https://api.example.com/data';
+
+    // Define the data to be sent in the request body
+    const data = {
+    username: 'exampleUser',
+    email: 'user@example.com'
+    };
+
+    // Make a POST request
+    fetch(apiUrl, {
+    method: 'POST', // Specify the request method
+    headers: {
+        'Content-Type': 'application/json' // Set the content type to JSON
+    },
+    body: JSON.stringify(data) // Convert the data to a JSON string
+    })
+    .then(response => {
+        if (!response.ok) {
+        throw new Error('Network response was not ok');
+        }
+        return response.json(); // Convert the response to JSON
+    })
+    .then(data => {
+        console.log('Success:', data); // Handle the response data
+    })
+    .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+    });
+
+#### What are headers?
+HTTP headers are pieces of information sent along with an HTTP request or response. They provide essential metadata about the request or response, such as content type, caching directives, and authentication credentials. Headers are structured as key-value pairs, with each header field separated from its value by a colon.
+
+Types of HTTP Headers
+- Request Headers: Provide information about the client and the resource being requested.
+    - Example: Authorization: Bearer <token>
+- Response Headers: Provide information about the server and the resource being sent.
+    - Example: Content-Type: application/json
+- Representation Headers: Describe the body of the resource, such as its MIME type.
+    - Example: Content-Encoding: gzip
+- Payload Headers: Contain information about the payload data, like content length.
+    - Example: Content-Length: 348
+
 ### What is SOLID?
 ---
 SOLID is a set of five design principles in object-oriented programming that help developers create more understandable, flexible, and maintainable software. These principles promote clean, modular, and scalable code that is easier to test and extend.
@@ -125,6 +194,78 @@ How: Return a cleanup function from the useEffect hook.
 
     export default MyComponent;
 ---
+
+### How do you create a Context?
+#### First, create the context
+
+    import React, { createContext, useState } from 'react';
+
+    // Create AuthContext with default value
+    const AuthContext = createContext(null);
+
+    export default AuthContext;
+
+#### Provide the context 
+Next, create a provider component that will wrap your application and provide the authentication state.
+
+    import React, { useState } from 'react';
+    import AuthContext from './AuthContext';
+
+    const AuthProvider = ({ children }) => {
+    const [user, setUser] = useState(null);
+
+    const login = (userData) => {
+        setUser(userData);
+    };
+
+    const logout = () => {
+        setUser(null);
+    };
+
+    return (
+        <AuthContext.Provider value={{ user, login, logout }}>
+        {children}
+        </AuthContext.Provider>
+    );
+    };
+
+    export default AuthProvider;
+
+#### Consume the context
+    import React, { useContext } from 'react';
+    import AuthContext from './AuthContext';
+
+    const UserProfile = () => {
+    const { user, login, logout } = useContext(AuthContext);
+
+    return (
+        <div>
+        {user ? (
+            <>
+            <p>Welcome, {user.name}!</p>
+            <button onClick={logout}>Logout</button>
+            </>
+        ) : (
+            <button onClick={() => login({ name: 'John Doe' })}>Login</button>
+        )}
+        </div>
+    );
+    };
+
+    export default UserProfile;
+
+#### Lastly, Wrap your App to provide the context to all components.
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+    import App from './App';
+    import AuthProvider from './AuthProvider';
+
+    ReactDOM.render(
+    <AuthProvider>
+        <App />
+    </AuthProvider>,
+    document.getElementById('root')
+    );
 
 ### What is NextJS?
 
