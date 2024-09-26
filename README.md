@@ -317,4 +317,47 @@ Next, create a provider component that will wrap your application and provide th
 
 ### What is NextJS?
 
+### What is NodeJS?
+
+Node.js is a web application framework built on Google Chrome's JavaScript Engine V8Engine.
+Comes with a runtime environment on which a JavaScript based script can be interpreted and executed which allows to execute a JavaScript code on any machine outside a browser and also can be executed in server.
+
+Features:
+ - Provides a rich library of various javascript modules which eases the development of web application.
+ - All APIs of Node.js are asynchronous that is non-blocking.
+    - Means that a Node.js based server never waits for an API to return data. Server moves to next API after calling it and a notification mechanism of events of Nodejs helps server to get response from the preivous API call.
+- Is single threaded but highly scalable.
+- Nodejs applications never buffer any data. These applications simply output the data in chunks.
+
+#### What is Package.json?
+package.json is present in the root directory of any Node application/module and it is used to define the properties of a package. Some attributes of package.json are:
+
+- name: name of the package.
+- version: version of the package.
+- description
+- homepage
+- author
+- contributors
+- dependencies
+- repository
+- main
+- keywords
+
+#### Callbacks
+Callback is an asynchronous equivalent for a function. A callback function is called at the completion of a given task and Node makes heavy use of callbacks. 
+All APIs of Node are written in such a way that they support callbacks.
+
+    const fs = require("fs") //Used for file based operations.
+    const buffer = require("buffer") //Used for buffer based operations.
+    const http = require("http") //Used for web based operations.
+
+#### Node.js four types of streams
+    1.- Readable
+    2.- Writable
+    3.- Duplex - Used for both write and read
+    4.- Transform - Type of duplex stream where the output is computed based on input
+
+#### Synchronous vs Asynchronous 
+
+
 
