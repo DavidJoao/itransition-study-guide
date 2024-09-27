@@ -158,6 +158,10 @@ ReactJS is a JavaScript library developed by Facebook for building user interfac
 
 - Virtual DOM: React uses a virtual DOM to improve performance. When the state of an object changes, React updates the virtual DOM first, then it compares the virtual DOM with a snapshot of the previous DOM state, and finally, it updates the real DOM with only the changes.
 - JSX: React uses JSX, a syntax extension that allows HTML to be written within JavaScript code. This makes the code easier to understand and debug.
+    -   Example of JSX Element:
+                
+            const element = <div id="login-btn">Login</div>
+
 - Ecosystem: React has a rich ecosystem with many libraries and tools that complement it, such as Redux for state management and React Router for routing.
 
 ### Features of React
@@ -166,6 +170,7 @@ ReactJS is a JavaScript library developed by Facebook for building user interfac
 2.- Supports server-side rendering.
 3.- Follows unidirectional data flow or data binding.
 4.- Uses reusable/composable UI components to develop the view. 
+5.- React's high performance has the ability the components that have changes rather than refreshing and reloading the entire set.
 
 ### Difference between an Element and Component
 An element is a plain object describing what you want to appear on the screen in terms of the DOM nodes or other components. Elemens can contain other elements in their props. Creating a React element is cheap because once one element is created it is never mutated.
